@@ -1,6 +1,6 @@
 package com.dto.way.chatting.web.controller;
 
-import com.dto.way.chatting.repository.ChatRepository;
+import com.dto.way.chatting.repository.ChatRoomRepository;
 import com.dto.way.chatting.web.dto.ChatDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +9,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
-import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +20,7 @@ import java.time.LocalDateTime;
 public class ChatController {
 
     private final SimpMessageSendingOperations template;
-    private final ChatRepository repository;
+    private final ChatRoomRepository repository;
     private final RabbitTemplate rabbitTemplate;
     private final static String CHAT_EXCHANGE_NAME = "chat.exchange";
     private final static String CHAT_QUEUE_NAME = "chat.queue";

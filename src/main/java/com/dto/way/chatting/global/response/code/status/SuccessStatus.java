@@ -57,7 +57,8 @@ public enum SuccessStatus implements BaseCode {
     //  채팅 관련 응답
     CHATROOM_ENTERED(HttpStatus.OK, "CHAT2001", "채팅방에 입장하였습니다."),
     CHATROOM_CREATED(HttpStatus.OK, "CHAT2002", "채팅방이 생성되었습니다."),
-
+    CHATROOM_MEMBER_LIST(HttpStatus.OK, "CHAT2003", "채팅방 내 사용자 목록이 조회되었습니다. "),
+    CHATROOM_LIST(HttpStatus.OK, "CHAT2004", "채팅방 목록이 조회되었습니다. "),
     ;
 
 
