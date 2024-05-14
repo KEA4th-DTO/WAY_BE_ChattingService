@@ -1,18 +1,18 @@
 spring:
-#  datasource:
-#    driver-class-name: org.postgresql.Driver
-#    url: ${DB_HOST}
-#    username: ${DB_USER}
-#    password: ${DB_PASSWORD}
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
-#    properties:
-#      database: postgresql
-#      hibernate:
-#        format_sql: true #To beautify or pretty print the SQL
-#        show_sql: true #show sql
-#      database-platform: org.hibernate.spatial.dialect.postgis.PostgisDialect
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_HOST}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      database: postgresql
+      hibernate:
+        format_sql: true #To beautify or pretty print the SQL
+        show_sql: true #show sql
+      database-platform: org.hibernate.spatial.dialect.postgis.PostgisDialect
   rabbitmq:
     host: localhost
     port: 5672  # RabbitMQ port
@@ -20,3 +20,5 @@ spring:
     password: guest
     virtual-host: /
 
+jwt:
+  secret: ${JWT_SECRET}
