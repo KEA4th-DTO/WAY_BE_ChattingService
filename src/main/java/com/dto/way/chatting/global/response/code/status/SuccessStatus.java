@@ -59,6 +59,9 @@ public enum SuccessStatus implements BaseCode {
     CHATROOM_CREATED(HttpStatus.OK, "CHAT2002", "채팅방이 생성되었습니다."),
     CHATROOM_MEMBER_LIST(HttpStatus.OK, "CHAT2003", "채팅방 내 사용자 목록이 조회되었습니다. "),
     CHATROOM_LIST(HttpStatus.OK, "CHAT2004", "채팅방 목록이 조회되었습니다. "),
+    CHATROOM_LEAVE(HttpStatus.OK, "CHAT2005", "채팅방에서 퇴장하였습니다."),
+    CHAT_LIST(HttpStatus.OK, "CHAT2006", "채팅 목록을 조회하였습니다."),
+
     ;
 
 

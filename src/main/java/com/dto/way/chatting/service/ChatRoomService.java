@@ -2,6 +2,7 @@ package com.dto.way.chatting.service;
 
 
 import com.dto.way.chatting.domain.ChatRoom;
+import com.dto.way.chatting.domain.ChatRoomMember;
 
 import java.util.List;
 
@@ -11,9 +12,5 @@ public interface ChatRoomService {
 
     ChatRoom createRoom(Long postId,String roomName);
 
-    List<String> getMemberList(String roomId);
-
-    void addMember(String roomId, String memberEmail);
-
-    void deleteMember(String roomId, String memberEmail);
+    List<ChatRoomMember> getChatRoomMemberList(Long roomId);
 }

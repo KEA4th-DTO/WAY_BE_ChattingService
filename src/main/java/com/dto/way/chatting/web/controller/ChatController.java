@@ -25,29 +25,6 @@ public class ChatController {
     private final static String CHAT_EXCHANGE_NAME = "chat.exchange";
     private final static String CHAT_QUEUE_NAME = "chat.queue";
 
-
-//    @MessageMapping("/enterUser")
-//    public void enterUser(@Payload ChatDto chat, SimpMessageHeaderAccessor headerAccessor) {
-//        repository.plusUserCnt(chat.getRoomId());
-//        String userUUID = repository.addUser(chat.getRoomId(), chat.getSender());
-//
-//        headerAccessor.getSessionAttributes().put("userUUID", userUUID);
-//        headerAccessor.getSessionAttributes().put("roomId", chat.getRoomId());
-//
-//        chat.setMessage(chat.getSender() + " 님 입장!!");
-//        template.convertAndSend("/sub/chat/room/" + chat.getRoomId(), chat);
-//    }
-//
-//    @MessageMapping("/sendMessage")
-//    public void sendMessage(@Payload ChatDto chat) {
-//        log.info("CHAT {}", chat);
-//        chat.setMessage(chat.getMessage());
-//        template.convertAndSend("/sub/chat/room/" + chat.getRoomId(), chat);
-//
-//    }
-
-
-
     // /pub/chat.message.{roomId} 로 요청하면 브로커를 통해 처리
     // /exchange/chat.exchange/room.{roomId} 를 구독한 클라이언트에 메시지가 전송된다.
     @MessageMapping("chat.enter.{chatRoomId}")
@@ -55,7 +32,6 @@ public class ChatController {
         chat.setTime(String.valueOf(LocalDateTime.now()));
         chat.setMessage(chat.getSender() + " 님 입장!!");
         rabbitTemplate.convertAndSend(CHAT_EXCHANGE_NAME, "room." + chatRoomId, chat);
-
     }
 
     @MessageMapping("chat.message.{chatRoomId}")

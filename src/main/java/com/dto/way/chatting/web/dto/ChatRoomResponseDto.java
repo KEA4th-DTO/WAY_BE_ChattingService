@@ -24,6 +24,16 @@ public class ChatRoomResponseDto {
     @Builder
     @NoArgsConstructor
     @AllArgsConstructor
+    public static class LeaveChatRoomResultDto {
+        private Long roomId;
+        private String roomName;
+    }
+
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class GetChatRoomResultDto{
         private Long roomId;
         private String roomName;

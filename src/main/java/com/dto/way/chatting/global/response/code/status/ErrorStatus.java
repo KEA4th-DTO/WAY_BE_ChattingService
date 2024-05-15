@@ -4,6 +4,7 @@ import com.dto.way.chatting.global.response.code.BaseErrorCode;
 import com.dto.way.chatting.global.response.code.ErrorReasonDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 
 @Getter
@@ -16,7 +17,8 @@ public enum ErrorStatus implements BaseErrorCode {
     _UNAUTHORIZED(HttpStatus.UNAUTHORIZED,"COMMON401","인증이 필요합니다."),
     _FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403", "금지된 요청입니다."),
 
-    // 이 곳에 응답을 추가합니다.
+    // 채팅방 관련 응답
+    CHATROOM_ALREADY_ENTERED(HttpStatus.BAD_REQUEST, "CHATROOM4001", "이미 참여한 채팅방입니다."),
     ;
 
 
