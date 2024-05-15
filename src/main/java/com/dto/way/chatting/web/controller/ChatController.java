@@ -1,5 +1,8 @@
 package com.dto.way.chatting.web.controller;
 
+import com.dto.way.chatting.converter.ChatRoomConverter;
+import com.dto.way.chatting.domain.Chat;
+import com.dto.way.chatting.repository.ChatRepository;
 import com.dto.way.chatting.repository.ChatRoomRepository;
 import com.dto.way.chatting.web.dto.ChatDto;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +24,7 @@ public class ChatController {
 
     private final SimpMessageSendingOperations template;
     private final ChatRoomRepository repository;
+    private final ChatRepository chatRepository;
     private final RabbitTemplate rabbitTemplate;
     private final static String CHAT_EXCHANGE_NAME = "chat.exchange";
     private final static String CHAT_QUEUE_NAME = "chat.queue";
@@ -44,7 +48,11 @@ public class ChatController {
 
     //기본적으로 chat.queue가 exchange에 바인딩 되어있기 때문에 모든 메시지 처리
     @RabbitListener(queues = CHAT_QUEUE_NAME)
-    public void receive(ChatDto chatDTO){
+    public void receive(ChatDto chatDTO) {
+
+        log.info("received : " + chatDTO.getMessage());
+        Chat chat = ChatRoomConverter.toChat(chatDTO);
+        chatRepository.save(chat);
         System.out.println("received : " + chatDTO.getMessage());
     }
 

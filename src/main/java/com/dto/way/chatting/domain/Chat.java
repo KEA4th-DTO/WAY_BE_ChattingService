@@ -2,12 +2,14 @@ package com.dto.way.chatting.domain;
 
 import com.dto.way.chatting.domain.Enum.MessageType;
 import jakarta.persistence.Id;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
+@Builder
 @Document(collation = "chat") //mongoDB
 public class Chat {
     @Id

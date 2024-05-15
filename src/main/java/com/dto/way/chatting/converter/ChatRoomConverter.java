@@ -55,4 +55,14 @@ public class ChatRoomConverter {
                 .build();
     }
 
+    public static Chat toChat(ChatDto chatDto) {
+        return Chat.builder()
+                .roomId(chatDto.getRoomId())
+                .message(chatDto.getMessage())
+                .sender(chatDto.getSender())
+                .time(chatDto.getTime())
+                .type(chatDto.getType())
+                .build();
+    }
+
 }
