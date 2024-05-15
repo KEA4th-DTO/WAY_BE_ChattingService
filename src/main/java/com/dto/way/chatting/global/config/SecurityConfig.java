@@ -31,6 +31,7 @@ public class SecurityConfig {
                         .requestMatchers("/member-service/signUp").permitAll()
                         .requestMatchers("/member-service/recreateToken").permitAll()
                         .requestMatchers("/member-service/logout").permitAll()
+                        .requestMatchers("/ws").permitAll()
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)

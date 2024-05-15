@@ -19,6 +19,15 @@ spring:
     username: guest
     password: guest
     virtual-host: /
+  data:
+    mongodb:
+#      host: ${MONGODB_HOST}
+#      port: ${MONGODB_PORT}
+#      database: ${MONGODB_DB}
+      username: ${MONGODB_USER}
+      password: ${MONGODB_PWD}
+      authentication-database: ${MONGODB_AUTH_DB}
+      uri: ${MONGODB_URI}
 
 jwt:
   secret: ${JWT_SECRET}

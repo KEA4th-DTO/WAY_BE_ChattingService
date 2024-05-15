@@ -7,7 +7,6 @@ import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -24,8 +23,8 @@ public class ChatRoom extends BaseEntity {
     private Long memberCount; // 채팅방 인원수
     private Long postId;
 
-    @ElementCollection
-    private List<String> memberList = new ArrayList<>();
+    @OneToMany(mappedBy = "chatRoom", cascade = CascadeType.ALL)
+    private List<ChatRoomMember> chatRoomMemberList = new ArrayList<>();
 
     public void upMemberCount() {
         this.memberCount++;
@@ -35,12 +34,12 @@ public class ChatRoom extends BaseEntity {
         this.memberCount--;
     }
 
-    public void addMember(String memberEmail) {
-        this.memberList.add(memberEmail);
-    }
-
-    public void removeMember(String memberEmail) {
-        this.memberList.remove(memberEmail);
-    }
+//    public void addMember(String memberEmail) {
+//        this.memberList.add(memberEmail);
+//    }
+//
+//    public void removeMember(String memberEmail) {
+//        this.memberList.remove(memberEmail);
+//    }
 
 }
